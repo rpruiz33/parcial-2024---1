@@ -1,5 +1,5 @@
 package modelo;
-
+import java.util.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Tarjeta {
 private String Codigo;
 private Usuario usuario;
 private List<Viaje>viajes ;
-private List<Carga>Cargas ;
+private List<Carga>cargas ;
 private double SaldoActual;
 public String getCodigo() {
 	return Codigo;
@@ -29,18 +29,18 @@ public void setViajes(List<Viaje> viajes) {
 	this.viajes = viajes;
 }
 public List<Carga> getCargas() {
-	return Cargas;
+	return cargas;
 }
 public void setCargas(List<Carga> cargas) {
-	Cargas = cargas;
+	cargas = cargas;
 }
 public double getSaldoActual() {
 	return SaldoActual;
 }
-public void setSaldoActual(double saldoActual) {
-	SaldoActual = saldoActual;
+public double setSaldoActual(double saldoActual) {
+	return SaldoActual = saldoActual;
 }
-public Tarjeta(String codigo, Usuario usuario, List<Viaje> viajes, List<Carga> cargas, double saldoActual) {
+public Tarjeta(String codigo, Usuario usuario, double saldoActual) {
 	super();
 	Codigo = codigo;
 	this.usuario = usuario;
@@ -51,7 +51,7 @@ public Tarjeta(String codigo, Usuario usuario, List<Viaje> viajes, List<Carga> c
 
 @Override
 public String toString() {
-	return "Tarjeta [Codigo=" + Codigo + ", usuario=" + usuario + ", viajes=" + viajes + ", Cargas=" + Cargas
+	return "Tarjeta [Codigo=" + Codigo + ", usuario=" + usuario + ", viajes=" + viajes + ", Cargas=" + cargas
 			+ ", SaldoActual=" + SaldoActual + "]";
 }
 public boolean equals(Tarjeta tarjeta) {
@@ -59,8 +59,7 @@ public boolean equals(Tarjeta tarjeta) {
 }
 public boolean agregarCarga(LocalDate fecha,double valor) {
 	
-	
-	double saldo=cargas.get(0).getSaldoActual()+valor;
-	return true;
+	boolean aux=cargas.add(new Carga (fecha,setSaldoActual(valor+getSaldoActual())));
+	return aux;
 }
 }

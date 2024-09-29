@@ -77,7 +77,7 @@ public boolean agregarTarjeta(String codigo,Usuario user) throws Exception{
 		}
 		
 	}else {
-		aux=tarjetas.add(new Tarjeta(codigo, user, null, null, 12.3));
+		aux=tarjetas.add(new Tarjeta(codigo, user, 0));
 		aux=true;
 	}
 	return aux;

@@ -1,5 +1,7 @@
 package test;
 
+import java.time.LocalDate;
+
 import modelo.Sistema;
 
 public class Test {
@@ -23,6 +25,10 @@ public class Test {
 		}
 		
 		System.out.println(sistema.getTarjetas());
+		System.out.println(sistema.traerTarjeta("111222").agregarCarga(LocalDate.of(2023, 9, 23), 200));
+		System.out.println(sistema.traerTarjeta("111222").agregarCarga(LocalDate.of(2023, 9, 30), 800));
+		System.out.println(sistema.traerTarjeta("111222").getCargas());
+		System.out.println(sistema.traerTarjeta("111222").getSaldoActual());
 	}
 
 }
