@@ -83,5 +83,17 @@ public boolean agregarTarjeta(String codigo,Usuario user) throws Exception{
 	return aux;
 }
 
-
+public List<Usuario> traerUsuarioSinSaldo(){
+	int i=0;
+	boolean aux=false;
+	List<Usuario> users=new ArrayList<Usuario>();
+	while (i<tarjetas.size() && users!=null ) {
+		if(tarjetas.get(i).getSaldoActual()==0) {
+			users.add(tarjetas.get(i).getUsuario());
+		}
+			i++;
+			
+	}
+	return users;
+}
 }

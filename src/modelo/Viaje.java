@@ -3,6 +3,11 @@ package modelo;
 import java.time.LocalDate;
 
 public class Viaje {
+@Override
+	public String toString() {
+		return "\nViaje [medioYlinea=" + medioYlinea + ", precio=" + precio + ", descuento=" + descuento + ", fecha="
+				+ fecha + "]";
+	}
 private String medioYlinea;
 private double precio;
 private double descuento;

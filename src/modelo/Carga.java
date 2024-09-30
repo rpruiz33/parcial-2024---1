@@ -24,6 +24,6 @@ public Carga(LocalDate fecha, double valor) {
 }
 @Override
 public String toString() {
-	return "Carga [fecha=" + fecha + ", valor=" + valor + "]";
+	return "\nCarga [fecha=" + fecha + ", valor=" + valor + "]";
 }
 }

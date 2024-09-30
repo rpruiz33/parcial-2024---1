@@ -19,6 +19,7 @@ public class Test {
 		try {
 			System.out.println(sistema.agregarTarjeta("111222", sistema.traerUsuario(1111111)));
 			System.out.println(sistema.agregarTarjeta("333444", sistema.traerUsuario(2222222)));
+			System.out.println(sistema.agregarTarjeta("123", sistema.traerUsuario(2222222)));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,15 +31,37 @@ public class Test {
 		System.out.println(sistema.traerTarjeta("111222").getCargas());
 		System.out.println(sistema.traerTarjeta("111222").getSaldoActual());
 		
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 1",100, 0, LocalDate.of(2024, 10, 1)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 0, LocalDate.of(2024, 10, 2)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 3",200, 50, LocalDate.of(2024, 10, 2)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 50, LocalDate.of(2024, 10, 2)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 4",150, 0, LocalDate.of(2024, 10, 2)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 0, LocalDate.of(2024, 10, 3)));
-		System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 1",100, 0, LocalDate.of(2024, 10, 4)));
-			System.out.println(sistema.traerTarjeta("111222").getSaldoActual());
-		
 
+		try {
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 1",100, 0, LocalDate.of(2024, 10, 1)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 0, LocalDate.of(2024, 10, 2)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 3",200, 50, LocalDate.of(2024, 10, 2)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 50, LocalDate.of(2024, 10, 2)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 4",150, 0, LocalDate.of(2024, 10, 2)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 2",100, 0, LocalDate.of(2024, 10, 3)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 1",100, 0, LocalDate.of(2024, 10, 4)));
+			System.out.println(sistema.traerTarjeta("111222").agregarViaje("colectivo 1",1000, 0, LocalDate.of(2024, 10, 2)));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println(sistema.getTarjetas());
+		System.out.println(sistema.traerTarjeta("111222").getSaldoActual());
+		
+		System.out.println(sistema.traerTarjeta("111222").calcularGastoTarjetaEnDia(LocalDate.of(2024,10,2)));
+		System.out.println(sistema.traerUsuarioSinSaldo());
+		try {
+			System.out.println(sistema.agregarUsuario(2222222, "2", "2"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			System.out.println(sistema.agregarTarjeta("123", sistema.traerUsuario(2222222)));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
 }

@@ -51,8 +51,7 @@ public Tarjeta(String codigo, Usuario usuario, double saldoActual) {
 
 @Override
 public String toString() {
-	return "Tarjeta [Codigo=" + Codigo + ", usuario=" + usuario + ", viajes=" + viajes + ", Cargas=" + cargas
-			+ ", SaldoActual=" + SaldoActual + "]";
+	return "\ntarjeta [Codigo=" + Codigo + ", usuario=" + usuario + ", viajes=" + viajes ;
 }
 public boolean equals(Tarjeta tarjeta) {
 	return tarjeta.getCodigo().equals(Codigo)&&tarjeta.getUsuario().equals(usuario)&& tarjeta.SaldoActual==SaldoActual;
@@ -75,28 +74,50 @@ public List<Viaje> traerViaje(LocalDate fecha){
 	return viajesAux;
 	
 }
-public boolean agregarViaje(String medioYlinea, double precio, double descuento, LocalDate fecha) {
+public boolean agregarViaje(String medioYlinea, double precio, double descuento, LocalDate fecha)throws Exception {
 	List <Viaje> viajesAux=new ArrayList<Viaje>();
 	viajesAux=traerViaje(fecha);
 	boolean aux=false;
 
+	if( viajesAux.size()==1 &&aux==false&&descuento==25 && viajesAux!=null)
+	{
+	
+		SaldoActual=getSaldoActual()-(precio/(4));
+
+		viajes.add(new Viaje(medioYlinea, precio,  descuento, fecha));
+		aux=true;
+	}
 	if( viajesAux.size()==2 &&aux==false&&descuento==50 && viajesAux!=null)
 	{
 	
 		SaldoActual=getSaldoActual()-(precio/(2));
+		
+		viajes.add(new Viaje(medioYlinea, precio,  descuento, fecha));
 		aux=true;
 	}
 	else {
 	
 	SaldoActual=getSaldoActual()-(precio);
+
 		viajes.add(new Viaje(medioYlinea, precio,  descuento, fecha));
 	aux=true;
 	}
 	
-	
+	if (SaldoActual<precio) {
+		throw new Exception("no alcanza saldo");
+	}
 return aux;
 	
 	
 }
-
+public double calcularGastoTarjetaEnDia(LocalDate fecha) {
+	double resultado=0;
+	List <Viaje> travel= traerViaje(fecha);
+	for (int i=0;i<travel.size();i++) {
+	resultado=resultado+travel.get(i).getPrecio();
+	}
+	
+	return resultado;
+	
+}
 }
