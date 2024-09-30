@@ -62,4 +62,41 @@ public boolean agregarCarga(LocalDate fecha,double valor) {
 	boolean aux=cargas.add(new Carga (fecha,setSaldoActual(valor+getSaldoActual())));
 	return aux;
 }
+
+public List<Viaje> traerViaje(LocalDate fecha){
+	List <Viaje> viajesAux=new ArrayList<Viaje>();
+	for(int i=0;i<viajes.size();i++) {
+		if(viajes.get(i).getFecha().equals(fecha)) {
+			viajesAux.add(viajes.get(i));
+		}
+		
+	}
+	
+	return viajesAux;
+	
+}
+public boolean agregarViaje(String medioYlinea, double precio, double descuento, LocalDate fecha) {
+	List <Viaje> viajesAux=new ArrayList<Viaje>();
+	viajesAux=traerViaje(fecha);
+	boolean aux=false;
+
+	if( viajesAux.size()==2 &&aux==false&&descuento==50 && viajesAux!=null)
+	{
+	
+		SaldoActual=getSaldoActual()-(precio/(2));
+		aux=true;
+	}
+	else {
+	
+	SaldoActual=getSaldoActual()-(precio);
+		viajes.add(new Viaje(medioYlinea, precio,  descuento, fecha));
+	aux=true;
+	}
+	
+	
+return aux;
+	
+	
+}
+
 }
